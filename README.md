@@ -1,70 +1,83 @@
 # 🔐 Secure Chat Platform
 
-A production-grade end-to-end encrypted messaging platform built in Python.
+A simple end-to-end encrypted chat application built in Python for secure messaging between users.
+
+---
 
 ## 📌 Overview
 
-Secure Chat Platform is a Python-based messaging system designed with **end-to-end encryption**, **real-time communication**, and **security-first architecture**.  
-It combines a **Flask REST API**, **asyncio WebSocket server**, and a **Tkinter desktop client** to deliver secure and efficient private messaging.
+Secure Chat Platform is a Python-based chat application that allows users to communicate securely using encryption.  
+The project includes a **server**, a **client**, and a **key generation module** to support secure message exchange.
+
+This project demonstrates the basics of:
+- Secure client-server communication
+- Message encryption and decryption
+- Python socket programming
+- Simple real-time chat system design
 
 ---
 
 ## ✨ Features
 
-- 🔒 End-to-end encrypted messaging
-- ⚡ Real-time communication using WebSockets
-- 👤 User registration and login system
-- 🛡️ Password hashing with bcrypt
-- 📩 Send and fetch private messages
-- ⏳ Self-destruct message TTL support
-- 🚨 Intrusion detection and input sanitization
-- 📜 Security, authentication, and audit logging
-- 🚫 Sliding-window rate limiting
-- 🔑 JWT-based token management
-- 🖥️ Tkinter desktop client interface
-- 🐳 Docker support for deployment
-- 🌐 Nginx reverse proxy with TLS support
+- 🔒 Encrypted chat messaging
+- 💬 Real-time communication between client and server
+- 🔑 Secret key generation using Python
+- 🖥️ Separate client and server programs
+- 📦 Lightweight and easy to run
+- 🛠️ Beginner-friendly project structure
 
 ---
 
-## 🏗️ Architecture
+## 🏗️ Project Structure
 
 ```text
-secure_chat/
-├── server/                    Flask REST API + asyncio WebSocket server
-│   ├── app.py                 → Register, Login, Send, Fetch messages
-│   ├── admin.py               → Admin Blueprint (ban/unban/promote/audit)
-│   ├── auth.py                → bcrypt password hashing (rounds=12)
-│   ├── database.py            → SQLite with WAL, indexes, sessions
-│   ├── encryption.py          → Fernet/AES-128-CBC (key derived from SECRET_KEY)
-│   ├── intrusion_detection.py
-│   ├── logger.py              → security.log / auth.log / audit.log
-│   ├── ratelimit.py           → Sliding-window rate limiter (thread-safe)
-│   ├── sanitizer.py           → HTML escape, null-byte, length, SQL heuristic
-│   └── websocket_server.py    → asyncio DM + broadcast
-│
-├── client/                    Tkinter GUI
-│   ├── client_app.py          → Entry point
-│   ├── login_window.py        → Dark-themed login screen
-│   ├── register_window.py     → Register + live password strength meter
-│   ├── chat_window.py         → Chat UI (dual WS+REST, self-destruct TTL)
-│   ├── encryption_client.py   → Per-session Fernet cipher
-│   └── websocket_client.py    → Non-blocking WS (asyncio in thread)
-│
-├── security/
-│   ├── password_policy.py     → Strength regex + score breakdown
-│   ├── hashing.py             → SHA-256 + HMAC-SHA-256 + timing-safe compare
-│   ├── token_manager.py       → JWT HS256 (reads from config)
-│   └── key_exchange.py        → X25519 identity key (future X3DH)
-│
-├── docker/
-│   ├── Dockerfile.server
-│   ├── Dockerfile.client
-│   └── docker-compose.yml
-│
-├── nginx/
-│   └── nginx.conf             → TLS 1.2/1.3, HSTS, WS upgrade, HTTP→HTTPS redirect
-│
-├── requirements.txt
-├── start_server.bat           → Windows: auto-venv + launch Flask + WS
-└── README.md
+SECURE-CHAT/
+├── client.py      # Client-side chat application
+├── server.py      # Server-side chat application
+├── key_gen.py     # Generates the secret key used for encryption
+└── README.md      # Project documentation
+## 🛠️ Technologies Used
+
+- **Python**
+- **Socket Programming**
+- **Cryptography / Encryption**
+- **Command Line Interface (CLI)**
+Clone the repository
+git clone https://github.com/rithikapalaniappan/SECURE-CHAT.git
+cd SECURE-CHAT
+Activate the virtual environment
+Windows:
+venv\Scripts\activate
+▶️ How to Run
+Step 1: Generate the secret key
+python key_gen.py
+Step 2: Start the server
+python server.py
+Step 3: Run the client
+python client.py
+🔐 Security Concept
+
+This project uses a generated secret key to help secure communication between the client and server.
+It is designed as a basic demonstration of encrypted messaging and secure communication concepts in Python.
+
+🚀 Future Improvements
+
+Add GUI for better user experience
+
+Support multiple clients
+
+Improve authentication system
+
+Store chat history securely
+
+Add stronger encryption workflow
+
+👩‍💻 Author
+
+Rithika Palaniappan
+Engineering Student | Interested in Cybersecurity & Secure Systems
+
+📄 License
+
+This project is created for educational purposes.
+
